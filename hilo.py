@@ -15,8 +15,10 @@ class Hilo:
   def draw(self):
     
     # If I understand random.randint correctly this will randomly choose a number between 1 and 13
-    self.value = random.randint(1,13)
+    self.value = random.randint(1, 13)
     # I am not sure if the score system will work yet. I am questioning the else statment because it is negative, but I hope it works
-    self.point = 100 if self.correct else -75 if not self.correct
-
-    
+    # I updated this statement so that it functions properly (I think), we don't need an if not statement here - Jordan
+    if self.correct:
+      self.points = 100 
+    else:
+       self.points = -75

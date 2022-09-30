@@ -2,7 +2,7 @@ import random
 """
 To create the deck of cards the player will be drawing from and to calculae the points.
 """
-class Card:
+class Hilo:
   
   def __int__(self):
     # self.correct is to keep track if the users input is correct or not and will be changed in another file

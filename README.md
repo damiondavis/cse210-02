@@ -34,3 +34,4 @@ root                    (project root folder)
 ---
 * Zack Doxey (zack13@byui.edu)
 * Jordan Waite (jman1819@byui.edu)
+* Erick Nava (ericknava@byui.edu)

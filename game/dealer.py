@@ -53,7 +53,8 @@ class Dealer:
     print()
     print(f"The first card's number is {self.last_card}")
     self.guess = input("would you like to guess the next to be higher or lower? [h/l] ").lower()
-    # If a playe inputs an invalid option it will allow them to try again
+    
+    # If a playe inputs an invalid option it will allow them to try again (Zack Doxey)
     while self.guess != "h" and self.guess != "l":
       print("\nNot a valid entry. \n")
       print(f"The first card's number is {self.last_card}")
@@ -107,7 +108,8 @@ class Dealer:
       play_again = input("Play again? [y/n] ").lower()
     
     self.is_playing = (play_again == "y")
-
+    
+    # If the player decides to stop playing this will thank the player and display their final score (Zack Doxey)
     if not self.is_playing:
       print("\nThank you for playing!")
       print(f"Your final score is {self.points}\n")

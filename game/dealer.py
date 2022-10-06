@@ -10,7 +10,7 @@ class Dealer:
   def __init__(self):
     # We want to create a new instance of the game here and assign the Hilo class to a variable - Jordan
     
-    self.cards = [] #Is this really needed? (ENH)
+    # self.cards = [] #Is this really needed? (ENH)
     self.points = 300 #Initiates points (ENH)
     self.is_playing = True
     self.score = 0 #Points can be updated in the same points variable (ENH) ?
@@ -46,13 +46,19 @@ class Dealer:
     # and if they say yes then we initiate the draw function from the hilo file.
     # after which we want to ask the user to guess a number and compare that
     # to the self.value integer generated via hilo.draw. - Jordan
-    #draw_cards = input("Would you like to play? [y/n] ") - This could be moved to the last function instead of asking at the beggining (ENH)
-    #self.is_playing = (draw_cards == "y")
+    # draw_cards = input("Would you like to play? [y/n] ") - This could be moved to the last function instead of asking at the beggining (ENH)
+    # self.is_playing = (draw_cards == "y")
     # Here we assign the random card value to a variable/ attribute and ask the player to guess higher or lower - Jordan
 
     print()
     print(f"The first card's number is {self.last_card}")
-    self.guess = input("would you like to guess the next to be higher or lower? [h/l] ")
+    self.guess = input("would you like to guess the next to be higher or lower? [h/l] ").lower()
+    
+    # If a playe inputs an invalid option it will allow them to try again (Zack Doxey)
+    while self.guess != "h" and self.guess != "l":
+      print("\nNot a valid entry. \n")
+      print(f"The first card's number is {self.last_card}")
+      self.guess = input("would you like to guess the next to be higher or lower? [h/l] ").lower()
 
 
 
@@ -60,14 +66,14 @@ class Dealer:
     if not self.is_playing:
       return
 
-    #gets a new instance of Hilo for the next card (ENH)
+    # gets a new instance of Hilo for the next card (ENH)
     card = self.card 
     card.draw()
     self.next_card = card.value
     print(f'Next card was: {self.next_card}')
 
 
-    #Compares last and next card with user selection
+    # Compares last and next card with user selection
     if self.next_card > self.last_card and self.guess == 'h':
         self.points += 100
     elif self.next_card < self.last_card and self.guess == 'l':
@@ -75,7 +81,7 @@ class Dealer:
     else:
         self.points -= 75
 
-    #Updates last_card variable with the current card value for next round
+    # Updates last_card variable with the current card value for next round
     self.last_card = self.next_card
 
 
@@ -88,10 +94,22 @@ class Dealer:
         print(f'Your score is: {self.points}')
     else:
         print(f'Your score is: {self.points}')
-        print('No more points')
-        print('Game over')
+        print('\nNo more points')
+        print('Game over \n')
         self.is_playing = False
         return
 
-    play_again = input("Play again? [y/n] ")
+    play_again = input("Play again? [y/n] ").lower()
+    
+    # This while statment will inform the player if that enter an incorect entry
+    # It will then allow them to try again (Zack Doxey) 
+    while play_again != "y" and play_again != "n":
+      print("\nNot a valid entry. \n")
+      play_again = input("Play again? [y/n] ").lower()
+    
     self.is_playing = (play_again == "y")
+    
+    # If the player decides to stop playing this will thank the player and display their final score (Zack Doxey)
+    if not self.is_playing:
+      print("\nThank you for playing!")
+      print(f"Your final score is {self.points}\n")

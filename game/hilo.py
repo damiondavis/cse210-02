@@ -11,7 +11,6 @@ class Hilo:
     #self.value = 0
     # set the points as zero even though they will start with 300 points so that the portion of code will be in another file
     self.points = 0
-   
   def draw(self):
     
     # If I understand random.randint correctly this will randomly choose a number between 1 and 13

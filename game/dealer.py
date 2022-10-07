@@ -78,6 +78,8 @@ class Dealer:
         self.points += 100
     elif self.next_card < self.last_card and self.guess == 'l':
         self.points += 100
+    elif self.next_card == self.last_card:
+        self.points += 0
     else:
         self.points -= 75
 
